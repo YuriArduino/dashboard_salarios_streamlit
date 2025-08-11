@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import numpy as np
 
-# --- 1. Configurações Visuais Avançadas (TEMA AZUL) ---
+# --- 1. Configurações Visuais (INTACTAS) ---
 COR_PRIMARIA_AZUL = "#4D94FF"
 COR_SECUNDARIA_AZUL = "#F72585"
 COR_TERCIARIA_AZUL = "#4ECDC4"
@@ -34,149 +34,49 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS Premium com a nova paleta azul
 st.markdown(f"""
 <style>
+    /* CSS INTACTO */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-    
-    .stApp {{
-        background: linear-gradient(135deg, #0F0F0F 0%, #1A1A1A 50%, #0F0F0F 100%) !important;
-        font-family: 'Inter', sans-serif !important;
-        color: #FFFFFF !important;
-    }}
-
-    [data-testid="stAppViewContainer"] > .main {{
-        background: transparent !important;
-        backdrop-filter: blur(10px) !important;
-    }}
-
-    .main-header {{
-        background: linear-gradient(90deg, {COR_PRIMARIA_AZUL}, {COR_TERCIARIA_AZUL}, {COR_SECUNDARIA_AZUL});
-        background-size: 200% 200%;
-        animation: gradientShift 4s ease infinite;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-size: 3rem !important;
-        font-weight: 700 !important;
-        text-align: center;
-        margin-bottom: 1rem;
-    }}
-
-    @keyframes gradientShift {{
-        0% {{ background-position: 0% 50%; }}
-        50% {{ background-position: 100% 50%; }}
-        100% {{ background-position: 0% 50%; }}
-    }}
-
-    .subtitle {{
-        color: #CCCCCC;
-        text-align: center;
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        text-shadow: 0 0 10px rgba(77, 148, 255, 0.3);
-    }}
-
-    [data-testid="stSidebar"] {{
-        background: rgba(26, 26, 26, 0.7) !important;
-        backdrop-filter: blur(20px) !important;
-        border-right: 1px solid rgba(77, 148, 255, 0.2) !important;
-    }}
-
-    div[data-testid="stMetric"] {{ 
-        background: rgba(30, 30, 30, 0.6) !important;
-        backdrop-filter: blur(15px) !important;
-        border-radius: 15px !important;
-        padding: 25px !important;
-        border: 1px solid rgba(77, 148, 255, 0.2) !important;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
-        transition: all 0.3s ease !important;
-        position: relative !important;
-        overflow: hidden !important;
-    }}
-    
-    div[data-testid="stMetric"]:hover {{
-        transform: translateY(-5px) !important;
-        box-shadow: 0 15px 45px rgba(77, 148, 255, 0.2) !important;
-        border: 1px solid rgba(77, 148, 255, 0.5) !important;
-    }}
-
-    div[data-testid="stMetric"]:before {{
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(77, 148, 255, 0.1), transparent);
-        transition: left 0.5s;
-    }}
-
-    div[data-testid="stMetric"]:hover:before {{
-        left: 100%;
-    }}
-
-    .section-title {{
-        font-size: 1.8rem !important;
-        color: {COR_PRIMARIA_AZUL} !important;
-        font-weight: 600 !important;
-        margin: 3rem 0 1.5rem 0 !important;
-        position: relative !important;
-        padding-left: 20px !important;
-    }}
-
-    .section-title:before {{
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 4px;
-        height: 30px;
-        background: linear-gradient(180deg, {COR_PRIMARIA_AZUL}, {COR_TERCIARIA_AZUL});
-        border-radius: 2px;
-    }}
-
-    /* CORREÇÃO DA COR DAS TAGS DO MULTISELECT */
-    [data-baseweb="tag"] {{
-        background-color: {COR_PRIMARIA_AZUL} !important;
-        color: #000000 !important; /* Texto preto para melhor contraste com o azul claro */
-        font-weight: 600;
-    }}
-    [data-baseweb="tag"] span[role="button"] {{
-        color: #000000 !important;
-    }}
-
-    .stSpinner > div {{
-        border-color: {COR_PRIMARIA_AZUL} !important;
-        border-top-color: transparent !important;
-    }}
-
-    ::-webkit-scrollbar-thumb {{
-        background: linear-gradient(180deg, {COR_PRIMARIA_AZUL}, {COR_TERCIARIA_AZUL});
-        border-radius: 4px;
-    }}
-
-    ::-webkit-scrollbar-thumb:hover {{
-        background: linear-gradient(180deg, {COR_TERCIARIA_AZUL}, {COR_PRIMARIA_AZUL});
-    }}
+    .stApp {{ background: linear-gradient(135deg, #0F0F0F 0%, #1A1A1A 50%, #0F0F0F 100%) !important; font-family: 'Inter', sans-serif !important; color: #FFFFFF !important; }}
+    [data-testid="stAppViewContainer"] > .main {{ background: transparent !important; backdrop-filter: blur(10px) !important; }}
+    .main-header {{ background: linear-gradient(90deg, {COR_PRIMARIA_AZUL}, {COR_TERCIARIA_AZUL}, {COR_SECUNDARIA_AZUL}); background-size: 200% 200%; animation: gradientShift 4s ease infinite; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 3rem !important; font-weight: 700 !important; text-align: center; margin-bottom: 1rem; }}
+    @keyframes gradientShift {{ 0% {{ background-position: 0% 50%; }} 50% {{ background-position: 100% 50%; }} 100% {{ background-position: 0% 50%; }} }}
+    .subtitle {{ color: #CCCCCC; text-align: center; font-size: 1.2rem; margin-bottom: 2rem; text-shadow: 0 0 10px rgba(77, 148, 255, 0.3); }}
+    [data-testid="stSidebar"] {{ background: rgba(26, 26, 26, 0.7) !important; backdrop-filter: blur(20px) !important; border-right: 1px solid rgba(77, 148, 255, 0.2) !important; }}
+    div[data-testid="stMetric"] {{ background: rgba(30, 30, 30, 0.6) !important; backdrop-filter: blur(15px) !important; border-radius: 15px !important; padding: 25px !important; border: 1px solid rgba(77, 148, 255, 0.2) !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important; transition: all 0.3s ease !important; position: relative !important; overflow: hidden !important; }}
+    div[data-testid="stMetric"]:hover {{ transform: translateY(-5px) !important; box-shadow: 0 15px 45px rgba(77, 148, 255, 0.2) !important; border: 1px solid rgba(77, 148, 255, 0.5) !important; }}
+    div[data-testid="stMetric"]:before {{ content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(77, 148, 255, 0.1), transparent); transition: left 0.5s; }}
+    div[data-testid="stMetric"]:hover:before {{ left: 100%; }}
+    .section-title {{ font-size: 1.8rem !important; color: {COR_PRIMARIA_AZUL} !important; font-weight: 600 !important; margin: 3rem 0 1.5rem 0 !important; position: relative !important; padding-left: 20px !important; }}
+    .section-title:before {{ content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 4px; height: 30px; background: linear-gradient(180deg, {COR_PRIMARIA_AZUL}, {COR_TERCIARIA_AZUL}); border-radius: 2px; }}
+    [data-baseweb="tag"] {{ background-color: {COR_PRIMARIA_AZUL} !important; color: #000000 !important; font-weight: 600; }}
+    [data-baseweb="tag"] span[role="button"] {{ color: #000000 !important; }}
+    .stSpinner > div {{ border-color: {COR_PRIMARIA_AZUL} !important; border-top-color: transparent !important; }}
+    ::-webkit-scrollbar-thumb {{ background: linear-gradient(180deg, {COR_PRIMARIA_AZUL}, {COR_TERCIARIA_AZUL}); border-radius: 4px; }}
+    ::-webkit-scrollbar-thumb:hover {{ background: linear-gradient(180deg, {COR_TERCIARIA_AZUL}, {COR_PRIMARIA_AZUL}); }}
 </style>
 """, unsafe_allow_html=True)
 
 
-# --- 2. Funções de Carregamento e Análise (INTACTAS) ---
+# --- 2. Funções de Carregamento e Análise (OTIMIZADAS) ---
 DATA_URL = "https://raw.githubusercontent.com/vqrca/dashboard_salarios_dados/refs/heads/main/dados-imersao-final.csv"
 
-@st.cache_data(ttl=3600)
+# OTIMIZAÇÃO 1: Cache avançado para carregamento de dados
+@st.cache_data(ttl=3600, show_spinner=False, persist="disk")
 def load_data(url: str) -> pd.DataFrame:
     try:
         df = pd.read_csv(url)
         df.columns = [c.strip().lower() for c in df.columns]
         df['usd'] = pd.to_numeric(df['usd'], errors='coerce')
         df.dropna(subset=['usd'], inplace=True)
-        df['faixa_salarial'] = pd.cut(df['usd'], 
-                                     bins=[0, 50000, 100000, 150000, 200000, float('inf')],
-                                     labels=['Até 50k', '50k-100k', '100k-150k', '150k-200k', '200k+'])
+        
+        # OTIMIZAÇÃO 2: Operação NumPy vetorizada para faixas salariais
+        bins = [0, 50000, 100000, 150000, 200000, np.inf]
+        labels = ['Até 50k', '50k-100k', '100k-150k', '150k-200k', '200k+']
+        df['faixa_salarial'] = np.searchsorted(bins, df['usd'].values) - 1
+        df['faixa_salarial'] = [labels[i] if i < len(labels) else '200k+' for i in df['faixa_salarial']]
+        
         for col in ['cargo', 'senioridade', 'contrato', 'tamanho_empresa', 'remoto', 'residencia_iso3']:
             if col in df.columns:
                 df[col] = df[col].astype(str)
@@ -185,7 +85,7 @@ def load_data(url: str) -> pd.DataFrame:
         st.error(f"❌ Erro ao carregar os dados: {e}")
         return pd.DataFrame()
 
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def get_filtered_data(df: pd.DataFrame, filters: dict) -> pd.DataFrame:
     df_filtrado = df.copy()
     for column, values in filters.items():
@@ -193,6 +93,7 @@ def get_filtered_data(df: pd.DataFrame, filters: dict) -> pd.DataFrame:
             df_filtrado = df_filtrado[df_filtrado[column].isin(values)]
     return df_filtrado
 
+@st.cache_data(show_spinner=False)
 def generate_advanced_insights(df: pd.DataFrame) -> dict:
     if df.empty or len(df) < 10:
         return {"insights": ["⚠️ Amostra insuficiente para análises robustas"], "metrics": {}}
@@ -200,13 +101,22 @@ def generate_advanced_insights(df: pd.DataFrame) -> dict:
     insights = []
     metrics = {}
     
+    # OTIMIZAÇÃO 3: Cálculos estatísticos eficientes com .describe()
+    salario_desc = df['usd'].describe()
+    mediana = salario_desc['50%']
+    Q1 = salario_desc['25%']
+    Q3 = salario_desc['75%']
+    IQR = Q3 - Q1
+    media = salario_desc['mean']
+    std = salario_desc['std']
+    
     if len(df['ano'].unique()) > 1:
         correlation = df['ano'].corr(df['usd'])
         slope = np.polyfit(df['ano'], df['usd'], 1)[0]
         trend = "crescente" if slope > 0 else "decrescente"
         insights.append(f"**Tendência de Mercado:** O mercado apresenta tendência {trend} com correlação de {correlation:.2f}")
     
-    cv = df['usd'].std() / df['usd'].mean()
+    cv = std / media
     dispersao = "alta" if cv > 0.5 else "moderada" if cv > 0.3 else "baixa"
     insights.append(f"**Dispersão Salarial:** {dispersao.title()} variabilidade (CV: {cv:.2f})")
     
@@ -214,45 +124,33 @@ def generate_advanced_insights(df: pd.DataFrame) -> dict:
     top_salario = df.groupby('cargo')['usd'].mean().max()
     insights.append(f"**Top Cargo:** {top_cargo} - ${top_salario:,.0f}")
     
-    Q1 = df['usd'].quantile(0.25)
-    Q3 = df['usd'].quantile(0.75)
-    IQR = Q3 - Q1
     outliers = df[(df['usd'] < Q1 - 1.5*IQR) | (df['usd'] > Q3 + 1.5*IQR)]
     outlier_percent = len(outliers) / len(df) * 100
     insights.append(f"**Outliers:** {outlier_percent:.1f}% dos salários são outliers estatísticos")
     
-    metrics = {'mediana': df['usd'].median(), 'q3': Q3, 'cv': cv, 'skewness': df['usd'].skew()}
+    metrics = {'mediana': mediana, 'q3': Q3, 'cv': cv, 'skewness': df['usd'].skew()}
     
     return {"insights": insights, "metrics": metrics}
 
-# --- 3. Visualizações Avançadas (COM NOVA PALETA) ---
+# --- 3. Visualizações Avançadas (COM OTIMIZAÇÃO DE CACHE) ---
+@st.cache_data(show_spinner=False)
 def create_salary_trend_chart(df: pd.DataFrame):
+    # ... (código da função intacto)
     yearly_stats = df.groupby('ano').agg({'usd': ['mean', 'median', 'std', 'count']}).round(0)
     yearly_stats.columns = ['Média', 'Mediana', 'Desvio Padrão', 'Quantidade']
     yearly_stats = yearly_stats.reset_index()
-    
-    fig = make_subplots(
-        rows=2, cols=2,
-        subplot_titles=('Evolução Salarial', 'Volume de Dados', 'Volatilidade', 'Comparativo Média vs Mediana'),
-        specs=[[{"secondary_y": False}, {"secondary_y": False}],
-               [{"secondary_y": False}, {"secondary_y": False}]]
-    )
-    
-    fig.add_trace(go.Scatter(x=yearly_stats['ano'], y=yearly_stats['Média'], 
-                            name='Média', line=dict(color=COR_PRIMARIA_AZUL, width=3)), row=1, col=1)
-    fig.add_trace(go.Scatter(x=yearly_stats['ano'], y=yearly_stats['Mediana'], 
-                            name='Mediana', line=dict(color=COR_SECUNDARIA_AZUL, width=2)), row=1, col=1)
-    fig.add_trace(go.Bar(x=yearly_stats['ano'], y=yearly_stats['Quantidade'], 
-                        name='Volume', marker_color=COR_TERCIARIA_AZUL), row=1, col=2)
-    fig.add_trace(go.Scatter(x=yearly_stats['ano'], y=yearly_stats['Desvio Padrão'], 
-                            name='Volatilidade', line=dict(color=COR_QUATERNARIA_AZUL, width=2)), row=2, col=1)
-    fig.add_trace(go.Bar(x=yearly_stats['ano'], y=yearly_stats['Média'] - yearly_stats['Mediana'], 
-                        name='Diferença Média-Mediana', marker_color=PALETA_CORES_AZUL[4]), row=2, col=2)
-    
+    fig = make_subplots(rows=2, cols=2, subplot_titles=('Evolução Salarial', 'Volume de Dados', 'Volatilidade', 'Comparativo Média vs Mediana'), specs=[[{"secondary_y": False}, {"secondary_y": False}], [{"secondary_y": False}, {"secondary_y": False}]])
+    fig.add_trace(go.Scatter(x=yearly_stats['ano'], y=yearly_stats['Média'], name='Média', line=dict(color=COR_PRIMARIA_AZUL, width=3)), row=1, col=1)
+    fig.add_trace(go.Scatter(x=yearly_stats['ano'], y=yearly_stats['Mediana'], name='Mediana', line=dict(color=COR_SECUNDARIA_AZUL, width=2)), row=1, col=1)
+    fig.add_trace(go.Bar(x=yearly_stats['ano'], y=yearly_stats['Quantidade'], name='Volume', marker_color=COR_TERCIARIA_AZUL), row=1, col=2)
+    fig.add_trace(go.Scatter(x=yearly_stats['ano'], y=yearly_stats['Desvio Padrão'], name='Volatilidade', line=dict(color=COR_QUATERNARIA_AZUL, width=2)), row=2, col=1)
+    fig.add_trace(go.Bar(x=yearly_stats['ano'], y=yearly_stats['Média'] - yearly_stats['Mediana'], name='Diferença Média-Mediana', marker_color=PALETA_CORES_AZUL[4]), row=2, col=2)
     fig.update_layout(height=600, title_text="Análise Temporal Avançada", showlegend=False)
     return fig
 
+@st.cache_data(show_spinner=False)
 def create_correlation_matrix(df: pd.DataFrame):
+    # ... (código da função intacto)
     df_numeric = df.select_dtypes(include=[np.number])
     if 'ano' in df.columns: df_numeric['ano'] = df['ano']
     corr_matrix = df_numeric.corr()
@@ -260,54 +158,46 @@ def create_correlation_matrix(df: pd.DataFrame):
     fig.update_layout(height=500)
     return fig
 
+@st.cache_data(show_spinner=False)
 def create_advanced_salary_analysis(df: pd.DataFrame):
-    fig = make_subplots(
-        rows=2, cols=2,
-        subplot_titles=('Distribuição por Senioridade', 'Box Plot por Tamanho Empresa', 
-                       'Violino por Modalidade', 'Dispersão Salário vs Experiência')
-    )
-    
+    # ... (código da função intacto)
+    fig = make_subplots(rows=2, cols=2, subplot_titles=('Distribuição por Senioridade', 'Box Plot por Tamanho Empresa', 'Violino por Modalidade', 'Dispersão Salário vs Experiência'))
     for i, senioridade in enumerate(df['senioridade'].unique()):
-        fig.add_trace(go.Box(y=df[df['senioridade'] == senioridade]['usd'], name=senioridade, 
-                            marker_color=PALETA_CORES_AZUL[i % len(PALETA_CORES_AZUL)]), row=1, col=1)
+        fig.add_trace(go.Box(y=df[df['senioridade'] == senioridade]['usd'], name=senioridade, marker_color=PALETA_CORES_AZUL[i % len(PALETA_CORES_AZUL)]), row=1, col=1)
     for i, tamanho in enumerate(df['tamanho_empresa'].unique()):
-        fig.add_trace(go.Box(y=df[df['tamanho_empresa'] == tamanho]['usd'], name=f'Empresa {tamanho}', 
-                            marker_color=PALETA_CORES_AZUL[i % len(PALETA_CORES_AZUL)]), row=1, col=2)
+        fig.add_trace(go.Box(y=df[df['tamanho_empresa'] == tamanho]['usd'], name=f'Empresa {tamanho}', marker_color=PALETA_CORES_AZUL[i % len(PALETA_CORES_AZUL)]), row=1, col=2)
     for i, remoto in enumerate(df['remoto'].unique()):
-        fig.add_trace(go.Violin(y=df[df['remoto'] == remoto]['usd'], name=remoto, 
-                               line_color=PALETA_CORES_AZUL[i % len(PALETA_CORES_AZUL)]), row=2, col=1)
+        fig.add_trace(go.Violin(y=df[df['remoto'] == remoto]['usd'], name=remoto, line_color=PALETA_CORES_AZUL[i % len(PALETA_CORES_AZUL)]), row=2, col=1)
     if 'ano' in df.columns:
-        fig.add_trace(go.Scatter(x=df['ano'], y=df['usd'], mode='markers',
-                                marker=dict(color=df['usd'], colorscale='Cividis', size=5),
-                                name='Salários'), row=2, col=2)
-    
+        fig.add_trace(go.Scatter(x=df['ano'], y=df['usd'], mode='markers', marker=dict(color=df['usd'], colorscale='Cividis', size=5), name='Salários'), row=2, col=2)
     fig.update_layout(height=800, title_text="Análise Salarial Multidimensional", showlegend=False)
     return fig
 
-# --- 4. Dashboard Principal (COM AJUSTES FINAIS) ---
+# --- 4. Dashboard Principal (COM OTIMIZAÇÃO DE ESTADO) ---
 def main():
     st.markdown('<h1 class="main-header"> Dashboard Executivo </h1>', unsafe_allow_html=True)
     st.markdown('<p class="subtitle"> Análise Avançada de Remuneração em Data Science & Analytics</p>', unsafe_allow_html=True)
     
-    progress_bar = st.progress(0)
-    status_text = st.empty()
-    
-    status_text.text('⏳ Carregando dados...')
-    progress_bar.progress(25)
-    
-    with st.spinner("🔄 Processando dados..."):
+    # OTIMIZAÇÃO 4: Controle de estado para carregamento de dados
+    if 'data_loaded' not in st.session_state:
+        progress_bar = st.progress(0)
+        status_text = st.empty()
+        status_text.text('⏳ Carregando dados pela primeira vez...')
+        progress_bar.progress(50)
         df = load_data(DATA_URL)
+        st.session_state.df = df
+        st.session_state.data_loaded = True
+        progress_bar.progress(100)
+        progress_bar.empty()
+        status_text.empty()
+    
+    df = st.session_state.df
     
     if df.empty:
         st.error("❌ Não foi possível carregar os dados")
         return
     
-    progress_bar.progress(50)
-    status_text.text('Configurando filtros...')
-    
     with st.sidebar:
-        # CORREÇÃO: Remoção da imagem quebrada
-        # st.image("https://i.imgur.com/g2y8d2q.png", width=80) 
         st.markdown("## **Painel de Controle**")
         st.markdown("### **Período**")
         anos_disponiveis = sorted(df['ano'].unique(), reverse=True)
@@ -321,10 +211,8 @@ def main():
         cargos_unicos = sorted(df['cargo'].unique())
         selected_role_map = st.selectbox("Cargo para Mapeamento", cargos_unicos, index=cargos_unicos.index('Data Scientist') if 'Data Scientist' in cargos_unicos else 0)
         if st.button("🔄 Resetar Filtros", help="Limpa todos os filtros aplicados"):
+            st.cache_data.clear() # Limpa o cache de dados
             st.experimental_rerun()
-    
-    progress_bar.progress(75)
-    status_text.text('🔍 Aplicando filtros...')
     
     filters = {'ano': selected_years, 'senioridade': selected_seniority, 'contrato': selected_contract, 'tamanho_empresa': selected_company_size}
     df_filtrado = get_filtered_data(df, filters)
@@ -333,22 +221,16 @@ def main():
         st.warning("⚠️ Nenhum dado encontrado com os filtros aplicados")
         return
     
-    progress_bar.progress(100)
-    status_text.text('✅ Dados prontos!')
-    progress_bar.empty()
-    status_text.empty()
-    
     st.markdown('<div class="section-title">Resumo Executivo</div>', unsafe_allow_html=True)
     
+    # ... (código das métricas intacto)
     salario_medio = df_filtrado['usd'].mean()
     salario_mediano = df_filtrado['usd'].median()
     salario_maximo = df_filtrado['usd'].max()
     total_registros = df_filtrado.shape[0]
     cargo_mais_frequente = df_filtrado["cargo"].mode().iloc[0] if not df_filtrado["cargo"].mode().empty else "N/A"
-    
     col1, col2, col3 = st.columns(3)
     col4, col5, col6 = st.columns(3)
-    
     with col1:
         delta_medio = f"{(salario_medio - df['usd'].mean()) / df['usd'].mean() * 100:+.1f}%"
         st.metric("Salário Médio", f"${salario_medio:,.0f}", delta=delta_medio)
@@ -359,7 +241,7 @@ def main():
     with col6:
         variacao = df_filtrado['usd'].std() / df_filtrado['usd'].mean()
         st.metric("Coef. Variação", f"{variacao:.2f}")
-    
+
     st.markdown('<div class="section-title">Insights Inteligentes</div>', unsafe_allow_html=True)
     
     insights_data = generate_advanced_insights(df_filtrado)
@@ -373,7 +255,7 @@ def main():
             st.markdown("### Métricas Estatísticas")
             st.metric("Mediana", f"${insights_data['metrics']['mediana']:,.0f}")
             st.metric("Q3", f"${insights_data['metrics']['q3']:,.0f}")
-            st.metric("Assimetria", f"{insights_data['metrics']['skewness']:.2f}")
+            st.metric("Assimetria", f"${insights_data['metrics']['skewness']:.2f}")
     
     st.markdown('<div class="section-title">Análises Visuais Avançadas</div>', unsafe_allow_html=True)
     
@@ -398,13 +280,13 @@ def main():
     
     st.markdown('<div class="section-title">Exploração de Dados</div>', unsafe_allow_html=True)
     
+    # ... (código da seção de dados intacto)
     col_data1, col_data2 = st.columns([3, 1])
     with col_data2:
         st.markdown("### Opções de Visualização")
         show_raw = st.checkbox("Mostrar dados brutos", value=False)
-        if st.button("📥 Download CSV", key="download_button", help="Baixar os dados filtrados em formato CSV"):
-            csv = df_filtrado.to_csv(index=False)
-            st.download_button(label="Clique para baixar", data=csv, file_name=f"dados_salarios_{pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')}.csv", mime="text/csv")
+        csv = df_filtrado.to_csv(index=False).encode('utf-8')
+        st.download_button(label="📥 Download CSV", data=csv, file_name=f"dados_salarios_{pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')}.csv", mime="text/csv", key="download_csv_button", help="Baixar os dados filtrados em formato CSV")
     with col_data1:
         if show_raw:
             st.dataframe(df_filtrado, use_container_width=True, height=400)
@@ -412,7 +294,7 @@ def main():
             st.markdown("### Resumo Estatístico")
             summary_stats = df_filtrado['usd'].describe().round(0)
             st.dataframe(summary_stats.to_frame('Estatísticas'), use_container_width=True)
-    
+
     st.markdown("---")
     st.markdown("<div style='text-align: center; color: #666; padding: 20px;'><p> <strong>Dashboard </strong> | Desenvolvido para Imersão Alura em Análise de Dados</p><p> Insights baseados em análise estatística avançada e visualização interativa</p></div>", unsafe_allow_html=True)
 
